@@ -7,8 +7,8 @@
     <meta name="description" content="Полевой дневник и большая карта забега пяти улиток.">
     <link rel="icon" type="image/png" href="/ulitochki-2-site/favicon.png">
     <title>Улиточки · Полевой дневник</title>
-    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-B4zA9sjr.js"></script>
-    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-DA9cmV1V.css">
+    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-DNgZ-wvM.js"></script>
+    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-DGsBQl7s.css">
   </head>
   <body>
     <main class="diary">
@@ -36,23 +36,22 @@
           Для просмотра поляны нужен браузер с поддержкой Canvas.
         </canvas>
         <canvas id="map-overlay" aria-hidden="true"></canvas>
+        <span id="starter-call" class="starter-call" role="status"></span>
         <button id="arkady-marker" class="arkady-marker" type="button" aria-haspopup="dialog" aria-label="Поговорить с Аркадием" hidden><span>Аркадий</span></button>
         <div class="map-label"><span class="pin" aria-hidden="true"></span><span id="place">Стартовая поляна</span></div>
         <div class="map-toolbar">
-          <label class="biome-picker">
-            Биомы <span aria-hidden="true">⌄</span>
-            <select id="biome-picker" aria-label="Перейти к биому"><option value="">Выбрать биом</option></select>
-          </label>
+          <button id="biome-picker" class="map-button" type="button" aria-haspopup="dialog">Биомы <span aria-hidden="true">⌄</span></button>
           <button id="map-tools" class="map-button" type="button" aria-expanded="false" aria-controls="map-panel">Инструменты</button>
           <button id="open-totalizer" class="map-button" type="button" aria-haspopup="dialog" title="Тотализатор Аркадия">Ставки</button>
         </div>
         <div id="map-status" class="map-status">
+          <button id="starter-sound" class="map-button" type="button" aria-pressed="false" title="Проиграть выстрел в момент старта" hidden>Звук старта</button>
           <span id="map-tool-hint" role="status" hidden></span>
           <button id="tracking" class="map-button" type="button" title="Остановить слежение" hidden></button>
         </div>
         <div id="map-panel" class="map-panel" aria-labelledby="map-panel-title" hidden>
           <header>
-            <h2 id="map-panel-title">Полевые отметки</h2>
+            <h2 id="map-panel-title">Инструменты карты</h2>
             <button id="close-map-tools" class="map-button" type="button" aria-label="Закрыть инструменты">×</button>
           </header>
           <div class="map-actions" role="group" aria-label="Действия на карте">
@@ -63,10 +62,13 @@
             <button id="measure-undo" type="button">Убрать точку</button>
             <button id="measure-clear" type="button">Очистить</button>
           </div>
-          <ul id="flag-list" class="flag-list" aria-label="Сохранённые флажки"></ul>
-          <p id="flag-empty" class="map-help">Поставьте флажок, чтобы вернуться к этому месту.</p>
+          <section class="map-saved" aria-labelledby="map-saved-title">
+            <h3 id="map-saved-title">Сохранённые места</h3>
+            <ul id="flag-list" class="flag-list" aria-label="Сохранённые флажки"></ul>
+            <p id="flag-empty" class="map-help">Поставьте флажок, чтобы вернуться к этому месту.</p>
+          </section>
           <details class="map-section">
-            <summary>Слои</summary>
+            <summary>Слои карты</summary>
             <div class="map-layers">
               <label><input id="layer-mini" type="checkbox" checked> Мини-карта</label>
               <label><input id="layer-grid" type="checkbox"> Сетка координат</label>
@@ -116,6 +118,17 @@
           </button>
         </div>
       </footer>
+
+      <dialog id="biome-dialog" class="biome-dialog" aria-labelledby="biome-title">
+        <header class="biome-header">
+          <h2 id="biome-title">Биомы мира</h2>
+          <form method="dialog"><button class="passport-close" type="submit" aria-label="Закрыть выбор биома" autofocus>×</button></form>
+        </header>
+        <label class="biome-search">Найти биом <input id="biome-search" type="search" autocomplete="off"></label>
+        <ul id="biome-list" class="biome-list" aria-label="Биомы"></ul>
+        <p id="biome-empty" role="status" hidden>Биомы не найдены.</p>
+        <button id="biome-random" class="passport-track" type="button">Случайный биом <span aria-hidden="true">↗</span></button>
+      </dialog>
 
       <dialog id="flag-dialog" class="flag-dialog" aria-labelledby="flag-title">
         <form id="flag-form">
@@ -224,10 +237,11 @@
           <div class="passport-observation">
             <p class="passport-activity">Сейчас <strong id="passport-activity"></strong></p>
             <dl class="passport-readings">
+              <div><dt>Место</dt><dd id="passport-place"></dd></div>
               <div><dt>Скорость</dt><dd id="passport-speed"></dd></div>
               <div><dt>Пройдено</dt><dd id="passport-distance"></dd></div>
-              <div><dt>Диапазон скорости</dt><dd id="passport-range"></dd></div>
             </dl>
+            <p class="passport-range">Диапазон скорости <strong id="passport-range"></strong></p>
           </div>
           <footer class="passport-footer">
             <div id="passport-pages" class="passport-pages" role="group" aria-label="Чей паспорт открыть"></div>
@@ -236,6 +250,6 @@
         </article>
       </dialog>
     </main>
-
+
   </body>
 </html>
