@@ -7,8 +7,8 @@
     <meta name="description" content="Полевой дневник и большая карта забега пяти улиток.">
     <link rel="icon" type="image/png" href="/ulitochki-2-site/favicon.png">
     <title>Улиточки · Полевой дневник</title>
-    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-DNgZ-wvM.js"></script>
-    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-DGsBQl7s.css">
+    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-DTHNhw2g.js"></script>
+    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-vP6Z2mrh.css">
   </head>
   <body>
     <main class="diary">
@@ -215,39 +215,83 @@
         </article>
       </dialog>
 
-      <dialog id="passport" class="passport" aria-labelledby="passport-kind passport-name">
-        <article class="passport-sheet">
-          <header class="passport-header">
-            <p id="passport-kind">Паспорт улитки</p>
+      <dialog id="passport" class="snail-passport" aria-labelledby="passport-title">
+        <div class="snail-passport-header">
+          <header class="snail-passport-title">
+            <h2 id="passport-title"><span class="book-icon" aria-hidden="true"></span> Паспорт улитки</h2>
             <form method="dialog">
               <button class="passport-close" type="submit" autofocus aria-label="Закрыть паспорт">×</button>
             </form>
           </header>
-          <div class="passport-profile">
-            <figure class="passport-figure">
-              <div class="passport-portrait"><canvas id="passport-portrait" width="44" height="35" aria-hidden="true"></canvas></div>
+          <div class="snail-passport-navigation">
+            <div class="snail-passport-tabs" role="tablist" aria-label="Разделы паспорта">
+              <button id="passport-profile-tab" type="button" role="tab" aria-selected="true" aria-controls="passport-profile">Профиль</button>
+              <button id="passport-race-tab" type="button" role="tab" aria-selected="false" aria-controls="passport-race" tabindex="-1">Забег</button>
+              <button id="passport-path-tab" type="button" role="tab" aria-selected="false" aria-controls="passport-path" tabindex="-1">Отметки пути</button>
+            </div>
+            <span id="passport-live" class="snail-passport-live"></span>
+          </div>
+        </div>
+
+        <div class="snail-passport-body">
+          <section id="passport-profile" class="snail-passport-profile" role="tabpanel" aria-labelledby="passport-profile-tab" tabindex="0">
+            <figure class="snail-passport-figure">
+              <div class="snail-passport-frame">
+                <span class="snail-passport-reticle" aria-hidden="true"></span>
+                <canvas id="passport-portrait" width="48" height="36" aria-hidden="true"></canvas>
+                <button id="passport-shell" class="snail-passport-shell" type="button" aria-label="Рассмотреть раковину" aria-pressed="false" title="Рассмотреть раковину"><span class="lens-icon" aria-hidden="true"></span></button>
+                <p class="snail-passport-activity"><span>Сейчас</span><strong id="passport-activity"></strong></p>
+              </div>
               <figcaption id="passport-marking"></figcaption>
             </figure>
-            <div class="passport-bio">
-              <h2 id="passport-name"></h2>
-              <p id="passport-character"></p>
-              <p id="passport-notes"></p>
+            <div class="snail-passport-bio">
+              <h3 id="passport-name"></h3>
+              <p id="passport-character" class="snail-passport-character"></p>
+              <p id="passport-notes" class="snail-passport-notes"></p>
+              <dl class="snail-passport-readings">
+                <div><dt>Место</dt><dd id="passport-place"></dd></div>
+                <div><dt>Скорость</dt><dd id="passport-speed"></dd></div>
+                <div><dt>Пройдено</dt><dd id="passport-distance"></dd></div>
+              </dl>
+              <section class="snail-passport-pace" aria-labelledby="passport-pace-title">
+                <header><h4 id="passport-pace-title">Темп за минуту</h4><span id="passport-range" title="Диапазон скорости"></span></header>
+                <div class="snail-passport-graph">
+                  <canvas id="passport-pace" width="600" height="115" role="img" aria-label="График изменения скорости за последнюю минуту"></canvas>
+                  <p id="passport-pace-empty" hidden>График появится после старта.</p>
+                </div>
+                <div class="snail-passport-axis" aria-hidden="true"><span>−60 с</span><span>Сейчас</span></div>
+              </section>
             </div>
-          </div>
-          <div class="passport-observation">
-            <p class="passport-activity">Сейчас <strong id="passport-activity"></strong></p>
-            <dl class="passport-readings">
-              <div><dt>Место</dt><dd id="passport-place"></dd></div>
-              <div><dt>Скорость</dt><dd id="passport-speed"></dd></div>
-              <div><dt>Пройдено</dt><dd id="passport-distance"></dd></div>
-            </dl>
-            <p class="passport-range">Диапазон скорости <strong id="passport-range"></strong></p>
-          </div>
-          <footer class="passport-footer">
-            <div id="passport-pages" class="passport-pages" role="group" aria-label="Чей паспорт открыть"></div>
-            <button id="passport-track" class="passport-track" type="button">К улитке</button>
-          </footer>
-        </article>
+          </section>
+
+          <section id="passport-race" role="tabpanel" aria-labelledby="passport-race-tab" tabindex="0" hidden>
+            <div class="snail-passport-section-heading">
+              <h3>Расстановка в забеге</h3>
+              <p id="passport-race-note"></p>
+            </div>
+            <table class="snail-passport-table" aria-label="Текущие места пяти улиток">
+              <thead><tr><th scope="col">Место</th><th scope="col">Улитка</th><th scope="col">Путь</th><th scope="col">Скорость</th><th scope="col">Отставание</th></tr></thead>
+              <tbody id="passport-standings"></tbody>
+            </table>
+          </section>
+
+          <section id="passport-path" role="tabpanel" aria-labelledby="passport-path-tab" tabindex="0" hidden>
+            <div class="snail-passport-section-heading">
+              <h3>Отметки пути <span id="passport-path-name"></span></h3>
+              <p>Пройденные отметки можно открыть на карте.</p>
+            </div>
+            <div class="snail-passport-next">
+              <div><h4 id="passport-next-title"></h4><span id="passport-remaining"></span></div>
+              <progress id="passport-progress" max="1" value="0" aria-labelledby="passport-next-title" aria-describedby="passport-remaining"></progress>
+            </div>
+            <ol id="passport-milestones" class="snail-passport-milestones"></ol>
+          </section>
+        </div>
+
+        <footer class="snail-passport-footer">
+          <div id="passport-pages" class="snail-passport-pages" role="group" aria-label="Чей паспорт открыть"></div>
+          <button id="passport-track" class="passport-track" type="button"><span class="snail-passport-target" aria-hidden="true"></span> К улитке</button>
+        </footer>
       </dialog>
     </main>
 
