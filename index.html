@@ -4,116 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#202b23">
-    <meta name="description" content="Полевой дневник и большая карта забега пяти улиток.">
+    <meta name="description" content="Полевой дневник и большая карта забега пяти улиток." data-en-content="A field journal and world map for a race between five snails.">
     <link rel="icon" type="image/png" href="/ulitochki-2-site/favicon.png">
-    <title>Улиточки · Полевой дневник</title>
-    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-1Ohv7KyT.js"></script>
-    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-C_yjskC_.css">
+    <title data-en-text="Snails · Field Journal">Улиточки · Полевой дневник</title>
+    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-DleMlbCm.js"></script>
+    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-Du7InVWt.css">
   </head>
   <body>
     <main class="diary">
       <header class="diary-header">
         <div class="title">
           <canvas id="emblem" width="29" height="24" aria-hidden="true"></canvas>
-          <h1>Улиточки</h1>
+          <h1 data-en-text="Snails">Улиточки</h1>
         </div>
-        <div class="view-switch" role="group" aria-label="Вид карты">
-          <button id="atlas" class="view-button" type="button" aria-pressed="false" title="Показать весь мир">Мир</button>
-          <button id="overview" class="view-button" type="button" aria-pressed="true" title="Вернуться на стартовую поляну">
+        <button id="language" class="view-button language-button" type="button" lang="en" aria-label="Switch to English">EN</button>
+        <div class="view-switch" role="group" aria-label="Вид карты" data-en-aria-label="Map view">
+          <button id="atlas" class="view-button" type="button" aria-pressed="false" title="Показать весь мир" data-en-title="Show the whole world" data-en-text="World">Мир</button>
+          <button id="overview" class="view-button" type="button" aria-pressed="true" title="Вернуться на стартовую поляну" data-en-title="Return to the starting meadow" data-en-text="Meadow">
             <canvas id="cabin-tab" width="23" height="21" aria-hidden="true"></canvas>Поляна
           </button>
-          <button id="close-up" class="view-button" type="button" aria-pressed="false">
+          <button id="close-up" class="view-button" type="button" aria-pressed="false" data-en-text="Close-up">
             <span class="view-icon lens-icon" aria-hidden="true"></span>Вблизи
           </button>
-          <button id="cinematic" class="view-button" type="button" aria-pressed="false" title="Кинокамера · Esc для выхода">
+          <button id="cinematic" class="view-button" type="button" aria-pressed="false" title="Кинокамера · Esc для выхода" data-en-title="Cinematic camera · Esc to exit" data-en-text="Film">
             <span class="view-icon film-icon" aria-hidden="true"></span>Кино
           </button>
         </div>
       </header>
 
-      <section class="map" aria-label="Карта мира">
-        <canvas id="scene" tabindex="0" aria-label="Карта забега. Стрелки перемещают карту, плюс и минус меняют масштаб. Enter выбирает точку в центре.">
+      <section class="map" aria-label="Карта мира" data-en-aria-label="World map">
+        <canvas id="scene" tabindex="0" aria-label="Карта забега. Стрелки перемещают карту, плюс и минус меняют масштаб. Enter выбирает точку в центре." data-en-aria-label="Race map. Use the arrow keys to pan, plus and minus to zoom, and Enter to select the center point." data-en-text="Use a browser with Canvas support to view the meadow.">
           Для просмотра поляны нужен браузер с поддержкой Canvas.
         </canvas>
         <canvas id="map-overlay" aria-hidden="true"></canvas>
         <span id="starter-call" class="starter-call" role="status"></span>
-        <button id="arkady-marker" class="arkady-marker" type="button" aria-haspopup="dialog" aria-label="Поговорить с Аркадием" hidden><span>Аркадий</span></button>
+        <button id="arkady-marker" class="arkady-marker" type="button" aria-haspopup="dialog" aria-label="Поговорить с Аркадием" hidden data-en-aria-label="Talk to Arkady"><span data-en-text="Arkady">Аркадий</span></button>
         <div class="map-label"><span class="pin" aria-hidden="true"></span><span id="place">Стартовая поляна</span></div>
         <div class="map-toolbar">
-          <button id="biome-picker" class="map-button" type="button" aria-haspopup="dialog">Биомы <span aria-hidden="true">⌄</span></button>
-          <button id="map-tools" class="map-button" type="button" aria-expanded="false" aria-controls="map-panel">Инструменты</button>
-          <button id="open-totalizer" class="map-button" type="button" aria-haspopup="dialog" title="Тотализатор Аркадия">Ставки</button>
+          <button id="biome-picker" class="map-button" type="button" aria-haspopup="dialog" data-en-text="Biomes">Биомы <span aria-hidden="true">⌄</span></button>
+          <button id="map-tools" class="map-button" type="button" aria-expanded="false" aria-controls="map-panel" data-en-text="Tools">Инструменты</button>
+          <button id="open-totalizer" class="map-button" type="button" aria-haspopup="dialog" title="Тотализатор Аркадия" data-en-title="Arkady’s betting stand" data-en-text="Bets">Ставки</button>
         </div>
         <div id="map-status" class="map-status">
-          <button id="starter-sound" class="map-button" type="button" aria-pressed="false" title="Проиграть выстрел в момент старта" hidden>Звук старта</button>
+          <button id="starter-sound" class="map-button" type="button" aria-pressed="false" title="Проиграть выстрел в момент старта" hidden data-en-title="Play the starting signal when the race begins" data-en-text="Start sound">Звук старта</button>
           <span id="map-tool-hint" role="status" hidden></span>
-          <button id="tracking" class="map-button" type="button" title="Остановить слежение" hidden></button>
+          <button id="tracking" class="map-button" type="button" title="Остановить слежение" hidden data-en-title="Stop tracking"></button>
         </div>
         <div id="map-panel" class="map-panel" aria-labelledby="map-panel-title" hidden>
           <header>
-            <h2 id="map-panel-title">Инструменты карты</h2>
-            <button id="close-map-tools" class="map-button" type="button" aria-label="Закрыть инструменты">×</button>
+            <h2 id="map-panel-title" data-en-text="Map tools">Инструменты карты</h2>
+            <button id="close-map-tools" class="map-button" type="button" aria-label="Закрыть инструменты" data-en-aria-label="Close map tools">×</button>
           </header>
-          <div class="map-actions" role="group" aria-label="Действия на карте">
-            <button id="add-flag" type="button" aria-pressed="false"><span aria-hidden="true">⚑</span> Флажок</button>
-            <button id="measure" type="button" aria-pressed="false"><span aria-hidden="true">↔</span> Линейка</button>
+          <div class="map-actions" role="group" aria-label="Действия на карте" data-en-aria-label="Map actions">
+            <button id="add-flag" type="button" aria-pressed="false" data-en-text="Flag"><span aria-hidden="true">⚑</span> Флажок</button>
+            <button id="measure" type="button" aria-pressed="false" data-en-text="Ruler"><span aria-hidden="true">↔</span> Линейка</button>
           </div>
-          <div id="measure-actions" class="map-actions" role="group" aria-label="Управление линейкой" hidden>
-            <button id="measure-undo" type="button">Убрать точку</button>
-            <button id="measure-clear" type="button">Очистить</button>
+          <div id="measure-actions" class="map-actions" role="group" aria-label="Управление линейкой" hidden data-en-aria-label="Ruler controls">
+            <button id="measure-undo" type="button" data-en-text="Undo point">Убрать точку</button>
+            <button id="measure-clear" type="button" data-en-text="Clear">Очистить</button>
           </div>
           <section class="map-saved" aria-labelledby="map-saved-title">
-            <h3 id="map-saved-title">Сохранённые места</h3>
-            <ul id="flag-list" class="flag-list" aria-label="Сохранённые флажки"></ul>
-            <p id="flag-empty" class="map-help">Поставьте флажок, чтобы вернуться к этому месту.</p>
+            <h3 id="map-saved-title" data-en-text="Saved places">Сохранённые места</h3>
+            <ul id="flag-list" class="flag-list" aria-label="Сохранённые флажки" data-en-aria-label="Saved flags"></ul>
+            <p id="flag-empty" class="map-help" data-en-text="Drop a flag to return to this spot.">Поставьте флажок, чтобы вернуться к этому месту.</p>
           </section>
           <details class="map-section">
-            <summary>Слои карты</summary>
+            <summary data-en-text="Map layers">Слои карты</summary>
             <div class="map-layers">
-              <label><input id="layer-mini" type="checkbox" checked> Мини-карта</label>
-              <label><input id="layer-grid" type="checkbox"> Сетка координат</label>
-              <label><input id="layer-trail" type="checkbox"> След выбранной улитки</label>
-              <label><input id="layer-flags" type="checkbox" checked> Флажки на карте</label>
+              <label data-en-text="Minimap"><input id="layer-mini" type="checkbox" checked> Мини-карта</label>
+              <label data-en-text="Coordinate grid"><input id="layer-grid" type="checkbox"> Сетка координат</label>
+              <label data-en-text="Selected snail’s trail"><input id="layer-trail" type="checkbox"> След выбранной улитки</label>
+              <label data-en-text="Map flags"><input id="layer-flags" type="checkbox" checked> Флажки на карте</label>
             </div>
           </details>
           <details class="map-section">
-            <summary>Координаты и ссылка</summary>
+            <summary data-en-text="Coordinates and link">Координаты и ссылка</summary>
             <form id="coordinates" class="map-coordinates">
-              <label>X, м <input id="map-x" type="text" inputmode="decimal" required></label>
-              <label>Y, м <input id="map-y" type="text" inputmode="decimal" required></label>
-              <button id="go-to-point" type="submit">Перейти</button>
-              <button id="copy-map" type="button">Скопировать ссылку</button>
-              <input id="map-link" type="text" readonly aria-label="Ссылка на этот вид" hidden>
+              <label data-en-text="X, m">X, м <input id="map-x" type="text" inputmode="decimal" required></label>
+              <label data-en-text="Y, m">Y, м <input id="map-y" type="text" inputmode="decimal" required></label>
+              <button id="go-to-point" type="submit" data-en-text="Go">Перейти</button>
+              <button id="copy-map" type="button" data-en-text="Copy link">Скопировать ссылку</button>
+              <input id="map-link" type="text" readonly aria-label="Ссылка на этот вид" hidden data-en-aria-label="Link to this view">
               <p id="map-feedback" class="map-help" role="status" hidden></p>
             </form>
           </details>
-          <button id="random-biome" class="map-explore" type="button">Случайный биом <span aria-hidden="true">↗</span></button>
+          <button id="random-biome" class="map-explore" type="button" data-en-text="Random biome">Случайный биом <span aria-hidden="true">↗</span></button>
         </div>
-        <div class="map-zoom" role="group" aria-label="Масштаб">
-          <button id="zoom-in" type="button" aria-label="Приблизить" title="Приблизить">+</button>
-          <button id="zoom-out" type="button" aria-label="Отдалить" title="Отдалить">−</button>
+        <div class="map-zoom" role="group" aria-label="Масштаб" data-en-aria-label="Zoom">
+          <button id="zoom-in" type="button" aria-label="Приблизить" title="Приблизить" data-en-aria-label="Zoom in" data-en-title="Zoom in">+</button>
+          <button id="zoom-out" type="button" aria-label="Отдалить" title="Отдалить" data-en-aria-label="Zoom out" data-en-title="Zoom out">−</button>
         </div>
-        <div class="map-scale" role="group" aria-label="Масштаб карты">
+        <div class="map-scale" role="group" aria-label="Масштаб карты" data-en-aria-label="Map scale">
           <span id="scale-label">1 м</span>
           <span id="scale-line" class="scale-line" aria-hidden="true"></span>
         </div>
         <div id="minimap-frame" class="minimap-frame">
-          <canvas id="minimap" tabindex="0" role="button" aria-label="Мини-карта. Нажмите на место для перехода. Enter открывает центр мира, стрелки сдвигают карту."></canvas>
+          <canvas id="minimap" tabindex="0" role="button" aria-label="Мини-карта. Нажмите на место для перехода. Enter открывает центр мира, стрелки сдвигают карту." data-en-aria-label="Minimap. Select a spot to go there. Enter goes to the world center, and the arrow keys pan the map."></canvas>
         </div>
       </section>
 
       <footer class="field-notes">
         <section class="roster" aria-labelledby="roster-title">
-          <h2 id="roster-title">Улитки</h2>
-          <div id="snail-tabs" class="specimens" role="group" aria-label="Выбор улитки"></div>
+          <h2 id="roster-title" data-en-text="Snails">Улитки</h2>
+          <div id="snail-tabs" class="specimens" role="group" aria-label="Выбор улитки" data-en-aria-label="Choose a snail"></div>
         </section>
         <div class="field-tools">
-          <dl class="readings" aria-label="Запись о забеге">
+          <dl class="readings" aria-label="Запись о забеге" data-en-aria-label="Race readings">
             <div><dt id="time-label">Время</dt><dd id="elapsed">0:00</dd></div>
-            <div><dt>Путь</dt><dd id="distance">0,0 см</dd></div>
-            <div><dt>Скорость</dt><dd id="speed">0 км/ч</dd></div>
+            <div><dt data-en-text="Distance">Путь</dt><dd id="distance">0,0 см</dd></div>
+            <div><dt data-en-text="Speed">Скорость</dt><dd id="speed">0 км/ч</dd></div>
           </dl>
-          <button id="open-passport" class="passport-trigger" type="button" aria-haspopup="dialog">
+          <button id="open-passport" class="passport-trigger" type="button" aria-haspopup="dialog" data-en-text="Passport">
             <span class="book-icon" aria-hidden="true"></span>Паспорт
           </button>
         </div>
@@ -121,31 +122,31 @@
 
       <dialog id="biome-dialog" class="biome-dialog" aria-labelledby="biome-title">
         <header class="biome-header">
-          <h2 id="biome-title">Биомы мира</h2>
-          <form method="dialog"><button class="passport-close" type="submit" aria-label="Закрыть выбор биома" autofocus>×</button></form>
+          <h2 id="biome-title" data-en-text="World biomes">Биомы мира</h2>
+          <form method="dialog"><button class="passport-close" type="submit" aria-label="Закрыть выбор биома" autofocus data-en-aria-label="Close biome picker">×</button></form>
         </header>
-        <label class="biome-search">Найти биом <input id="biome-search" type="search" autocomplete="off"></label>
-        <ul id="biome-list" class="biome-list" aria-label="Биомы"></ul>
-        <p id="biome-empty" role="status" hidden>Биомы не найдены.</p>
-        <button id="biome-random" class="passport-track" type="button">Случайный биом <span aria-hidden="true">↗</span></button>
+        <label class="biome-search" data-en-text="Find a biome">Найти биом <input id="biome-search" type="search" autocomplete="off"></label>
+        <ul id="biome-list" class="biome-list" aria-label="Биомы" data-en-aria-label="Biomes"></ul>
+        <p id="biome-empty" role="status" hidden data-en-text="No biomes found.">Биомы не найдены.</p>
+        <button id="biome-random" class="passport-track" type="button" data-en-text="Random biome">Случайный биом <span aria-hidden="true">↗</span></button>
       </dialog>
 
       <dialog id="flag-dialog" class="flag-dialog" aria-labelledby="flag-title">
         <form id="flag-form">
           <h2 id="flag-title">Новый флажок</h2>
-          <label for="flag-name">Название</label>
+          <label for="flag-name" data-en-text="Name">Название</label>
           <input id="flag-name" type="text" maxlength="40" required autofocus>
           <fieldset>
-            <legend>Цвет флажка</legend>
-            <label><input type="radio" name="flag-color" value="gold" aria-label="Янтарный" checked></label>
-            <label><input type="radio" name="flag-color" value="blue" aria-label="Голубой"></label>
-            <label><input type="radio" name="flag-color" value="red" aria-label="Коралловый"></label>
-            <label><input type="radio" name="flag-color" value="green" aria-label="Мятный"></label>
+            <legend data-en-text="Flag color">Цвет флажка</legend>
+            <label><input type="radio" name="flag-color" value="gold" aria-label="Янтарный" checked data-en-aria-label="Amber"></label>
+            <label><input type="radio" name="flag-color" value="blue" aria-label="Голубой" data-en-aria-label="Sky blue"></label>
+            <label><input type="radio" name="flag-color" value="red" aria-label="Коралловый" data-en-aria-label="Coral"></label>
+            <label><input type="radio" name="flag-color" value="green" aria-label="Мятный" data-en-aria-label="Mint"></label>
           </fieldset>
           <footer>
-            <button id="delete-flag" type="button" hidden>Удалить</button>
-            <button id="cancel-flag" type="button">Отмена</button>
-            <button type="submit">Сохранить</button>
+            <button id="delete-flag" type="button" hidden data-en-text="Delete">Удалить</button>
+            <button id="cancel-flag" type="button" data-en-text="Cancel">Отмена</button>
+            <button type="submit" data-en-text="Save">Сохранить</button>
           </footer>
         </form>
       </dialog>
@@ -154,15 +155,15 @@
         <article class="passport-sheet">
           <header class="passport-header totalizer-header">
             <canvas id="arkady-portrait" width="28" height="26" aria-hidden="true"></canvas>
-            <h2 id="totalizer-title">Ставки Аркадия</h2>
+            <h2 id="totalizer-title" data-en-text="Arkady’s Bets">Ставки Аркадия</h2>
             <form method="dialog">
-              <button class="passport-close" type="submit" autofocus aria-label="Закрыть тотализатор">×</button>
+              <button class="passport-close" type="submit" autofocus aria-label="Закрыть тотализатор" data-en-aria-label="Close betting stand">×</button>
             </form>
           </header>
 
-          <div class="bet-tabs" role="tablist" aria-label="Тотализатор">
-            <button id="bet-offer-tab" type="button" role="tab" aria-selected="true" aria-controls="bet-offer">Прогноз</button>
-            <button id="bet-journal-tab" type="button" role="tab" aria-selected="false" aria-controls="bet-journal" tabindex="-1">Мои ставки <span id="bet-count"></span></button>
+          <div class="bet-tabs" role="tablist" aria-label="Тотализатор" data-en-aria-label="Betting stand">
+            <button id="bet-offer-tab" type="button" role="tab" aria-selected="true" aria-controls="bet-offer" data-en-text="Prediction">Прогноз</button>
+            <button id="bet-journal-tab" type="button" role="tab" aria-selected="false" aria-controls="bet-journal" tabindex="-1" data-en-text="My bets">Мои ставки <span id="bet-count"></span></button>
           </div>
 
           <section id="bet-offer" role="tabpanel" aria-labelledby="bet-offer-tab">
@@ -178,39 +179,39 @@
               </fieldset>
 
               <fieldset id="bet-resources" class="bet-resources">
-                <legend>Чем ставим</legend>
+                <legend data-en-text="Stake resource">Чем ставим</legend>
                 <div id="bet-wallet" class="betting-wallet"></div>
               </fieldset>
               <div class="bet-stake">
                 <div>
-                  <label for="bet-amount">Количество</label>
+                  <label for="bet-amount" data-en-text="Amount">Количество</label>
                   <div class="bet-stepper">
-                    <button id="bet-less" type="button" aria-label="Уменьшить ставку">−</button>
+                    <button id="bet-less" type="button" aria-label="Уменьшить ставку" data-en-aria-label="Decrease stake">−</button>
                     <input id="bet-amount" type="number" inputmode="numeric" min="1" step="1" value="1" required aria-describedby="bet-feedback">
-                    <button id="bet-more-chips" type="button" aria-label="Увеличить ставку">+</button>
+                    <button id="bet-more-chips" type="button" aria-label="Увеличить ставку" data-en-aria-label="Increase stake">+</button>
                   </div>
                 </div>
                 <div class="bet-return">
-                  <span>При выигрыше</span>
-                  <output id="bet-payout" aria-label="Выплата при выигрыше" for="bet-amount bet-outcomes bet-wallet">—</output>
+                  <span data-en-text="Potential payout">При выигрыше</span>
+                  <output id="bet-payout" aria-label="Выплата при выигрыше" for="bet-amount bet-outcomes bet-wallet" data-en-aria-label="Potential payout">—</output>
                 </div>
               </div>
               <div class="bet-actions">
-                <button id="bet-next" type="button">Другой прогноз</button>
-                <button id="bet-submit" type="submit" disabled>Поставить</button>
+                <button id="bet-next" type="button" data-en-text="Next prediction">Другой прогноз</button>
+                <button id="bet-submit" type="submit" disabled data-en-text="Place bet">Поставить</button>
               </div>
               <p id="bet-feedback" class="bet-note" role="status"></p>
             </form>
             <details class="bet-details">
-              <summary>Базовые коэффициенты улиток</summary>
+              <summary data-en-text="Base odds by snail">Базовые коэффициенты улиток</summary>
               <dl id="snail-odds" class="snail-odds"></dl>
             </details>
           </section>
 
           <section id="bet-journal" role="tabpanel" aria-labelledby="bet-journal-tab" tabindex="0" hidden>
-            <p id="bet-empty" class="bet-empty">Здесь будут твои ставки и их результаты.</p>
+            <p id="bet-empty" class="bet-empty" data-en-text="Your bets and their results will appear here.">Здесь будут твои ставки и их результаты.</p>
             <ol id="bet-history" class="bet-history"></ol>
-            <button id="bet-more" type="button" hidden>Показать ещё</button>
+            <button id="bet-more" type="button" hidden data-en-text="Show more">Показать ещё</button>
           </section>
         </article>
       </dialog>
@@ -218,16 +219,16 @@
       <dialog id="passport" class="snail-passport" aria-labelledby="passport-title">
         <div class="snail-passport-header">
           <header class="snail-passport-title">
-            <h2 id="passport-title"><span class="book-icon" aria-hidden="true"></span> Паспорт улитки</h2>
+            <h2 id="passport-title" data-en-text="Snail passport"><span class="book-icon" aria-hidden="true"></span> Паспорт улитки</h2>
             <form method="dialog">
-              <button class="passport-close" type="submit" autofocus aria-label="Закрыть паспорт">×</button>
+              <button class="passport-close" type="submit" autofocus aria-label="Закрыть паспорт" data-en-aria-label="Close passport">×</button>
             </form>
           </header>
           <div class="snail-passport-navigation">
-            <div class="snail-passport-tabs" role="tablist" aria-label="Разделы паспорта">
-              <button id="passport-profile-tab" type="button" role="tab" aria-selected="true" aria-controls="passport-profile">Профиль</button>
-              <button id="passport-race-tab" type="button" role="tab" aria-selected="false" aria-controls="passport-race" tabindex="-1">Забег</button>
-              <button id="passport-path-tab" type="button" role="tab" aria-selected="false" aria-controls="passport-path" tabindex="-1">Отметки пути</button>
+            <div class="snail-passport-tabs" role="tablist" aria-label="Разделы паспорта" data-en-aria-label="Passport sections">
+              <button id="passport-profile-tab" type="button" role="tab" aria-selected="true" aria-controls="passport-profile" data-en-text="Profile">Профиль</button>
+              <button id="passport-race-tab" type="button" role="tab" aria-selected="false" aria-controls="passport-race" tabindex="-1" data-en-text="Race">Забег</button>
+              <button id="passport-path-tab" type="button" role="tab" aria-selected="false" aria-controls="passport-path" tabindex="-1" data-en-text="Milestones">Отметки пути</button>
             </div>
             <span id="passport-live" class="snail-passport-live"></span>
           </div>
@@ -239,65 +240,65 @@
               <div class="snail-passport-frame">
                 <span class="snail-passport-reticle" aria-hidden="true"></span>
                 <canvas id="passport-portrait" width="48" height="36" aria-hidden="true"></canvas>
-                <div class="snail-passport-portrait-controls" role="group" aria-label="Управление портретом">
-                  <button id="passport-animation" type="button" aria-label="Анимация портрета" aria-pressed="false"><span aria-hidden="true"></span></button>
-                  <button id="passport-shell" type="button" aria-label="Увеличение раковины" aria-pressed="false" title="Рассмотреть раковину"><span class="lens-icon" aria-hidden="true"></span></button>
+                <div class="snail-passport-portrait-controls" role="group" aria-label="Управление портретом" data-en-aria-label="Portrait controls">
+                  <button id="passport-animation" type="button" aria-label="Анимация портрета" aria-pressed="false" data-en-aria-label="Portrait animation"><span aria-hidden="true"></span></button>
+                  <button id="passport-shell" type="button" aria-label="Увеличение раковины" aria-pressed="false" title="Рассмотреть раковину" data-en-aria-label="Shell close-up"><span class="lens-icon" aria-hidden="true"></span></button>
                 </div>
               </div>
               <figcaption>
                 <strong id="passport-marking"></strong>
-                <span>Скорость <span id="passport-range"></span></span>
+                <span data-en-text="Speed">Скорость <span id="passport-range"></span></span>
               </figcaption>
             </figure>
             <div class="snail-passport-bio">
               <h3 id="passport-name"></h3>
               <p id="passport-character" class="snail-passport-character"></p>
               <p id="passport-notes" class="snail-passport-notes"></p>
-              <p class="snail-passport-activity"><span>Сейчас</span><strong id="passport-activity"></strong></p>
+              <p class="snail-passport-activity"><span data-en-text="Now">Сейчас</span><strong id="passport-activity"></strong></p>
               <dl class="snail-passport-readings">
-                <div><dt>Место</dt><dd id="passport-place"></dd></div>
-                <div><dt>Отставание</dt><dd id="passport-gap"></dd></div>
-                <div><dt>Скорость</dt><dd id="passport-speed"></dd></div>
-                <div><dt>Пройдено</dt><dd id="passport-distance"></dd></div>
+                <div><dt data-en-text="Place">Место</dt><dd id="passport-place"></dd></div>
+                <div><dt data-en-text="Gap">Отставание</dt><dd id="passport-gap"></dd></div>
+                <div><dt data-en-text="Speed">Скорость</dt><dd id="passport-speed"></dd></div>
+                <div><dt data-en-text="Distance">Пройдено</dt><dd id="passport-distance"></dd></div>
               </dl>
               <p class="snail-passport-location"><span class="pin" aria-hidden="true"></span><span id="passport-location"></span></p>
             </div>
             <section class="snail-passport-pace" aria-labelledby="passport-pace-title">
               <header>
-                <h4 id="passport-pace-title">График скорости</h4>
-                <div class="snail-passport-periods" role="group" aria-label="Период графика скорости">
-                  <button type="button" data-pace-seconds="60" aria-pressed="true">1 мин</button>
-                  <button type="button" data-pace-seconds="300" aria-pressed="false">5 мин</button>
+                <h4 id="passport-pace-title" data-en-text="Speed chart">График скорости</h4>
+                <div class="snail-passport-periods" role="group" aria-label="Период графика скорости" data-en-aria-label="Speed chart range">
+                  <button type="button" data-pace-seconds="60" aria-pressed="true" data-en-text="1 min">1 мин</button>
+                  <button type="button" data-pace-seconds="300" aria-pressed="false" data-en-text="5 min">5 мин</button>
                 </div>
               </header>
               <div class="snail-passport-graph">
                 <canvas id="passport-pace" width="600" height="104" role="img" aria-label="Изменение скорости за 1 минуту"></canvas>
                 <p id="passport-pace-empty" hidden>График появится после старта.</p>
               </div>
-              <div class="snail-passport-axis" aria-hidden="true"><span id="passport-pace-start">−1 мин</span><span>Сейчас</span></div>
+              <div class="snail-passport-axis" aria-hidden="true"><span id="passport-pace-start">−1 мин</span><span data-en-text="Now">Сейчас</span></div>
               <dl class="snail-passport-pace-stats">
-                <div><dt>Путь за период</dt><dd id="passport-pace-distance">—</dd></div>
-                <div><dt>Средняя скорость</dt><dd id="passport-pace-average">—</dd></div>
-                <div><dt>Пик скорости</dt><dd id="passport-pace-peak">—</dd></div>
+                <div><dt data-en-text="Distance in range">Путь за период</dt><dd id="passport-pace-distance">—</dd></div>
+                <div><dt data-en-text="Average speed">Средняя скорость</dt><dd id="passport-pace-average">—</dd></div>
+                <div><dt data-en-text="Top speed">Пик скорости</dt><dd id="passport-pace-peak">—</dd></div>
               </dl>
             </section>
           </section>
 
           <section id="passport-race" role="tabpanel" aria-labelledby="passport-race-tab" tabindex="0" hidden>
             <div class="snail-passport-section-heading">
-              <h3>Расстановка в забеге</h3>
+              <h3 data-en-text="Race standings">Расстановка в забеге</h3>
               <p id="passport-race-note"></p>
             </div>
-            <table class="snail-passport-table" aria-label="Текущие места пяти улиток">
-              <thead><tr><th scope="col">Место</th><th scope="col">Улитка</th><th scope="col">Путь</th><th scope="col">Скорость</th><th scope="col">Отставание</th></tr></thead>
+            <table class="snail-passport-table" aria-label="Текущие места пяти улиток" data-en-aria-label="Current standings for the five snails">
+              <thead><tr><th scope="col" data-en-text="Place">Место</th><th scope="col" data-en-text="Snail">Улитка</th><th scope="col" data-en-text="Distance">Путь</th><th scope="col" data-en-text="Speed">Скорость</th><th scope="col" data-en-text="Gap">Отставание</th></tr></thead>
               <tbody id="passport-standings"></tbody>
             </table>
           </section>
 
           <section id="passport-path" role="tabpanel" aria-labelledby="passport-path-tab" tabindex="0" hidden>
             <div class="snail-passport-section-heading">
-              <h3>Отметки пути <span id="passport-path-name"></span></h3>
-              <p>Пройденные отметки можно открыть на карте.</p>
+              <h3 data-en-text="Milestones">Отметки пути <span id="passport-path-name"></span></h3>
+              <p data-en-text="Reached milestones can be opened on the map.">Пройденные отметки можно открыть на карте.</p>
             </div>
             <div class="snail-passport-next">
               <div><h4 id="passport-next-title"></h4><span id="passport-remaining"></span></div>
@@ -308,8 +309,8 @@
         </div>
 
         <footer class="snail-passport-footer">
-          <div id="passport-pages" class="snail-passport-pages" role="group" aria-label="Чей паспорт открыть"></div>
-          <button id="passport-track" class="passport-track" type="button"><span class="snail-passport-target" aria-hidden="true"></span> К улитке</button>
+          <div id="passport-pages" class="snail-passport-pages" role="group" aria-label="Чей паспорт открыть" data-en-aria-label="Choose a snail’s passport"></div>
+          <button id="passport-track" class="passport-track" type="button" data-en-text="Find snail"><span class="snail-passport-target" aria-hidden="true"></span> К улитке</button>
         </footer>
       </dialog>
     </main>
