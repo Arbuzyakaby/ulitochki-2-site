@@ -7,8 +7,8 @@
     <meta name="description" content="Полевой дневник и большая карта забега пяти улиток.">
     <link rel="icon" type="image/png" href="/ulitochki-2-site/favicon.png">
     <title>Улиточки · Полевой дневник</title>
-    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-DTHNhw2g.js"></script>
-    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-vP6Z2mrh.css">
+    <script type="module" crossorigin src="/ulitochki-2-site/assets/index-1Ohv7KyT.js"></script>
+    <link rel="stylesheet" crossorigin href="/ulitochki-2-site/assets/index-C_yjskC_.css">
   </head>
   <body>
     <main class="diary">
@@ -239,29 +239,48 @@
               <div class="snail-passport-frame">
                 <span class="snail-passport-reticle" aria-hidden="true"></span>
                 <canvas id="passport-portrait" width="48" height="36" aria-hidden="true"></canvas>
-                <button id="passport-shell" class="snail-passport-shell" type="button" aria-label="Рассмотреть раковину" aria-pressed="false" title="Рассмотреть раковину"><span class="lens-icon" aria-hidden="true"></span></button>
-                <p class="snail-passport-activity"><span>Сейчас</span><strong id="passport-activity"></strong></p>
+                <div class="snail-passport-portrait-controls" role="group" aria-label="Управление портретом">
+                  <button id="passport-animation" type="button" aria-label="Анимация портрета" aria-pressed="false"><span aria-hidden="true"></span></button>
+                  <button id="passport-shell" type="button" aria-label="Увеличение раковины" aria-pressed="false" title="Рассмотреть раковину"><span class="lens-icon" aria-hidden="true"></span></button>
+                </div>
               </div>
-              <figcaption id="passport-marking"></figcaption>
+              <figcaption>
+                <strong id="passport-marking"></strong>
+                <span>Скорость <span id="passport-range"></span></span>
+              </figcaption>
             </figure>
             <div class="snail-passport-bio">
               <h3 id="passport-name"></h3>
               <p id="passport-character" class="snail-passport-character"></p>
               <p id="passport-notes" class="snail-passport-notes"></p>
+              <p class="snail-passport-activity"><span>Сейчас</span><strong id="passport-activity"></strong></p>
               <dl class="snail-passport-readings">
                 <div><dt>Место</dt><dd id="passport-place"></dd></div>
+                <div><dt>Отставание</dt><dd id="passport-gap"></dd></div>
                 <div><dt>Скорость</dt><dd id="passport-speed"></dd></div>
                 <div><dt>Пройдено</dt><dd id="passport-distance"></dd></div>
               </dl>
-              <section class="snail-passport-pace" aria-labelledby="passport-pace-title">
-                <header><h4 id="passport-pace-title">Темп за минуту</h4><span id="passport-range" title="Диапазон скорости"></span></header>
-                <div class="snail-passport-graph">
-                  <canvas id="passport-pace" width="600" height="115" role="img" aria-label="График изменения скорости за последнюю минуту"></canvas>
-                  <p id="passport-pace-empty" hidden>График появится после старта.</p>
-                </div>
-                <div class="snail-passport-axis" aria-hidden="true"><span>−60 с</span><span>Сейчас</span></div>
-              </section>
+              <p class="snail-passport-location"><span class="pin" aria-hidden="true"></span><span id="passport-location"></span></p>
             </div>
+            <section class="snail-passport-pace" aria-labelledby="passport-pace-title">
+              <header>
+                <h4 id="passport-pace-title">График скорости</h4>
+                <div class="snail-passport-periods" role="group" aria-label="Период графика скорости">
+                  <button type="button" data-pace-seconds="60" aria-pressed="true">1 мин</button>
+                  <button type="button" data-pace-seconds="300" aria-pressed="false">5 мин</button>
+                </div>
+              </header>
+              <div class="snail-passport-graph">
+                <canvas id="passport-pace" width="600" height="104" role="img" aria-label="Изменение скорости за 1 минуту"></canvas>
+                <p id="passport-pace-empty" hidden>График появится после старта.</p>
+              </div>
+              <div class="snail-passport-axis" aria-hidden="true"><span id="passport-pace-start">−1 мин</span><span>Сейчас</span></div>
+              <dl class="snail-passport-pace-stats">
+                <div><dt>Путь за период</dt><dd id="passport-pace-distance">—</dd></div>
+                <div><dt>Средняя скорость</dt><dd id="passport-pace-average">—</dd></div>
+                <div><dt>Пик скорости</dt><dd id="passport-pace-peak">—</dd></div>
+              </dl>
+            </section>
           </section>
 
           <section id="passport-race" role="tabpanel" aria-labelledby="passport-race-tab" tabindex="0" hidden>
